@@ -16,7 +16,7 @@ root.title("Cookie Clicker")
 root.geometry("600x400")
 
 # Objects
-main_character_img = tk.PhotoImage(file="imgs/main_character.png")
+main_character_img = tk.PhotoImage(file="imgs/main_character2.png")
 
 # Widgets
 
@@ -25,7 +25,7 @@ score_label = tk.Label(root, text="Score: 0", font=("Arial", 20))
 score_label.pack(pady=10)
 
 # Button to click on to increase score
-main_character = tk.Button(root, image=main_character_img, width=200, height=252, command=main_character_click)
+main_character = tk.Button(root, image=main_character_img, width=150, height=200, command=main_character_click)
 main_character.pack(pady=20)
 
 root.mainloop()
