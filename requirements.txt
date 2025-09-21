@@ -1,0 +1,6 @@
+
+# This is a list of dependencies for the project
+# You can install them with:
+# pip install -r requirements.txt
+
+pygame==2.5.2
