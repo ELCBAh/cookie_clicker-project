@@ -5,6 +5,13 @@
 ### ~~Basic functionalities~~
 ### ~~Main menu with a start button and close game functionalities~~
 ### World simulation
+
+Population
+Diseases
+Trends
+
+---
+
 ### Random events
 ### Custom bussiness name
 ### World variables
