@@ -9,10 +9,10 @@
 ### Custom bussiness name
 ### World variables
 
-Locations
-Conditions
-NRG
-Politics
-Economy
+Locations  
+Conditions  
+NRG  
+Politics  
+Economy  
 
 ---
