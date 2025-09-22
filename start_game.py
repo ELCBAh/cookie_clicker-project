@@ -9,8 +9,10 @@ product_value = 5
 production = 0
 production_modifier = 1
 production_stock = production
+
 # Sell variables
 sell_multiplier = 1
+
 # Score variables
 score = 0
 multiplier_cost = 10
