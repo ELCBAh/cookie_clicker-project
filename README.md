@@ -6,3 +6,11 @@
 ### ~~Main menu with a start button and close game functionalities~~
 ### World simulation
 ### Random events
+### Custom bussiness name
+### World variables
+Locations
+Conditions
+NRG
+Politics
+Economy
+---
