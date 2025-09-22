@@ -8,6 +8,7 @@
 ### Random events
 ### Custom bussiness name
 ### World variables
+
 Locations
 Conditions
 NRG
