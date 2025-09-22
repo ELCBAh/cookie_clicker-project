@@ -14,6 +14,7 @@ Trends
 
 ### Random events
 ### Custom bussiness name
+### Change character image and custom name
 ### World variables
 
 Locations  
@@ -23,3 +24,5 @@ Politics
 Economy  
 
 ---
+
+### Save game and load game functionality
