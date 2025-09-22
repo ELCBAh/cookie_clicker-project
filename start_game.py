@@ -69,6 +69,10 @@ def start_game(main_menu_window):
         else:
             upgrade_sell_button.config(text=f"You need {score - 20:.2f} more points to upgrade")
 
+    def return_to_menu():
+        game_window.destroy()
+        main_menu_window.deiconify()
+
     def on_game_close():
         game_window.destroy()
         main_menu_window.deiconify()
@@ -103,4 +107,9 @@ def start_game(main_menu_window):
     upgrade_sell_button = tk.Button(game_window, text="Upgrade sell for 20", command=upgrade_sell)
     upgrade_sell_button.pack(pady=10)
 
+    # Button to return to main menu
+    main_menu_button = tk.Button(game_window, text="Main Menu", command=return_to_menu)
+    main_menu_button.pack(side="bottom", pady=20)
+
     game_window.protocol("WM_DELETE_WINDOW", on_game_close)
+    game_window.protocol("WM_DELETE_WINDOW", return_to_menu)

@@ -25,4 +25,4 @@ Economy
 
 ---
 
-### Save game and load game functionality
+### Save game and load game
