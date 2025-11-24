@@ -13,6 +13,7 @@
 ## World simulation
 
 Population (of a market, expand on future updates to different markets and treaties)  
+Fertility rate  
 Diseases  
 Trends  
 
@@ -25,6 +26,7 @@ Add automation to production and selling
 ## Change character image and custom name
 ## World variables
 
+Population  (by locations)
 Locations  (by markets)
 Infrastructure  (by markets and locations)
 NRG  (by markets, infrastructure, politics, economy, resources and locations)
