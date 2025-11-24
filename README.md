@@ -29,6 +29,6 @@ NRG
 Politics  
 Economy  
 
----
+##  
 
 ## Save game and load game
