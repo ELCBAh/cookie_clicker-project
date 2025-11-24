@@ -41,11 +41,11 @@ def start_game(main_menu_window):
             score -= multiplier_cost
             multiplier += 1
             multiplier_cost = multiplier_cost * 1.25
-            upgrade_button.config(text=f"Upgrade ({multiplier}x) for {multiplier_cost:.2f} points")
+            upgrade_button.config(text=f"Upgrade production ({multiplier}x) for {multiplier_cost:.2f} points")
             score_label.config(text=f"Score: {score:.2f}")
         else:
             upgrade_button.config(text=f"You need {score - multiplier_cost:.2f} more points to upgrade")
-            upgrade_button.after(3000, lambda: upgrade_button.config(text=f"Upgrade ({multiplier}x) for {multiplier_cost:.2f} points"))
+            upgrade_button.after(3000, lambda: upgrade_button.config(text=f"Upgrade production ({multiplier}x) for {multiplier_cost:.2f} points"))
 
     def sell_production():
         "Handles production and sell to score"
@@ -55,10 +55,10 @@ def start_game(main_menu_window):
             production -= min(production, sell_multiplier)
             production_label.config(text=f"Production: {production}")
             score_label.config(text=f"Score: {score:.2f}")
-            sell_button.config(text=f"Sell for {product_value}")
+            sell_button.config(text=f"Sell production for {product_value}")
         else:
             sell_button.config(text="Not enough products to sell")
-            sell_button.after(3000, lambda: sell_button.config(text=f"Sell for {product_value}"))
+            sell_button.after(3000, lambda: sell_button.config(text=f"Sell production for {product_value}"))
 
     def upgrade_sell():
         "Handles sell button upgrade"
@@ -67,18 +67,18 @@ def start_game(main_menu_window):
             score -= 20
             sell_multiplier += 1
             score_label.config(text=f"Score: {score:.2f}")
-            upgrade_sell_button.config(text=f"Upgrade sell ({sell_multiplier}x) for 20 points")
+            upgrade_sell_button.config(text=f"Upgrade sell capacity ({sell_multiplier}x) for 20 points")
         else:
             upgrade_sell_button.config(text=f"You need {score - 20:.2f} more points to upgrade")
-            upgrade_sell_button.after(3000, lambda: upgrade_sell_button.config(text=f"Upgrade sell ({sell_multiplier}x) for 20 points"))
+            upgrade_sell_button.after(3000, lambda: upgrade_sell_button.config(text=f"Upgrade sell capacity ({sell_multiplier}x) for 20 points"))
 
     def toggle_production_box():
-        "Switching visibility of content_frame"
-        if content_frame.winfo_viewable():
-            content_frame.pack_forget()
+        "Switching visibility of production_frame"
+        if production_frame.winfo_viewable():
+            production_frame.pack_forget()
             toggle_button.config(text="+ Production")
         else:
-            content_frame.pack(pady=20)
+            production_frame.pack(padx=10)
             toggle_button.config(text="- Production")
 
     def toggle_economy_box():
@@ -87,7 +87,7 @@ def start_game(main_menu_window):
             economy_frame.pack_forget()
             toggle_economy_button.config(text="+ Economy")
         else:
-            economy_frame.pack(pady=20)
+            economy_frame.pack(padx=10, side="right")
             toggle_economy_button.config(text="- Economy")
 
     def return_to_menu():
@@ -103,6 +103,10 @@ def start_game(main_menu_window):
 
     # Widgets
 
+    # Content container
+    content_container = tk.Frame(game_window)
+    content_container.pack(pady=10)
+
     # Bottom main menu bar
     bottom_main_menu_bar = tk.Frame(game_window)
     bottom_main_menu_bar.pack(side="bottom", pady=20)
@@ -113,44 +117,49 @@ def start_game(main_menu_window):
 
     # Button to toggle production box
     toggle_button = tk.Button(top_collapsibles_bar, text="+ Production", command=toggle_production_box)
-    toggle_button.pack(pady=10)
+    toggle_button.pack(padx=10, side="left")
 
     # Button to toggle economy box
     toggle_economy_button = tk.Button(top_collapsibles_bar, text="+ Economy", command=toggle_economy_box)
-    toggle_economy_button.pack(pady=10)
+    toggle_economy_button.pack(padx=10, side="right")
 
     # Frame to contain production widgets
-    content_frame = tk.Frame(game_window)
-    content_frame.pack(pady=20)
+    production_frame = tk.Frame(game_window)
+    production_frame.pack(padx=10)
+
+    # Frame to contain economy widgets
+    economy_frame = tk.Frame(game_window)
+    economy_frame.pack(padx=10, side="right")
 
     # Label to show production
-    production_label = tk.Label(content_frame, text="Production: 0", font=("Arial", 20))
+    production_label = tk.Label(economy_frame, text="Production: 0", font=("Arial", 20))
     production_label.pack(pady=10)
 
     # Label to show score
-    score_label = tk.Label(content_frame, text="Score: 0", font=("Arial", 20))
+    score_label = tk.Label(economy_frame, text="Score: 0", font=("Arial", 20))
     score_label.pack(pady=10)
 
     # Button to click on to increase production
-    main_character = tk.Button(content_frame, image=main_character_img, width=150, height=200, command=main_character_click)
+    main_character = tk.Button(production_frame, image=main_character_img, width=150, height=200, command=main_character_click)
     main_character.img = main_character_img
     main_character.pack(pady=20)
 
     # Button to upgrade the main character production generation 2x per click
-    upgrade_button = tk.Button(content_frame, text=f"Upgrade for {multiplier_cost}", command=upgrade_click)
-    upgrade_button.pack(pady=10)
+    upgrade_button = tk.Button(production_frame, text=f"Upgrade production for {multiplier_cost}", command=upgrade_click)
+    upgrade_button.pack(pady=10, side="top")
 
-    # Button to sell production
-    sell_button = tk.Button(content_frame, text=f"Sell for {product_value}", command=sell_production)
-    sell_button.pack(pady=20)
 
     # Button to upgrade sell capacity
-    upgrade_sell_button = tk.Button(content_frame, text="Upgrade sell for 20", command=upgrade_sell)
-    upgrade_sell_button.pack(pady=10)
+    upgrade_sell_button = tk.Button(production_frame, text="Upgrade sell capacity for 20", command=upgrade_sell)
+    upgrade_sell_button.pack(pady=10, side="top")
+
+    # Button to sell production
+    sell_button = tk.Button(production_frame, text=f"Sell production for {product_value}", command=sell_production)
+    sell_button.pack(pady=10, side="bottom")
 
     # Button to return to main menu
     main_menu_button = tk.Button(bottom_main_menu_bar, text="Main Menu", command=return_to_menu)
-    main_menu_button.pack(side="bottom", padx=20)
+    main_menu_button.pack(side="bottom", pady=20)
 
     game_window.protocol("WM_DELETE_WINDOW", on_game_close)
     game_window.protocol("WM_DELETE_WINDOW", return_to_menu)

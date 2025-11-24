@@ -9,6 +9,7 @@
 ### ~~Production is on its own box that can be collapsed to the top of the screen.~~  
 ### ~~Bottom bar containing Main Menu, and can be expanded to show other options in the future.~~  
 ### ~~Reset all button's text to their initial value after 3 seconds of warning so it shows necessary information.~~  
+
 ## World simulation
 
 Population  
