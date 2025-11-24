@@ -6,8 +6,8 @@
 ### ~~Main menu with a start button and close game functionalities~~
 ### GUI
 
-Production is on its own box that can be collapsed to the top of the screen.
-Bottom bar containing Main Menu, and can be expanded to show other options in the future.
+Production is on its own box that can be collapsed to the top of the screen.  
+Bottom bar containing Main Menu, and can be expanded to show other options in the future.  
 ### World simulation
 
 Population  
