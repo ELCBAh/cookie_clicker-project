@@ -4,11 +4,12 @@
 
 ### ~~Basic functionalities~~
 ### ~~Main menu with a start button and close game functionalities~~
-### GUI
+## GUI
 
-Production is on its own box that can be collapsed to the top of the screen.  
-Bottom bar containing Main Menu, and can be expanded to show other options in the future.  
-### World simulation
+### ~~Production is on its own box that can be collapsed to the top of the screen.~~  
+### ~~Bottom bar containing Main Menu, and can be expanded to show other options in the future.~~  
+### ~~Reset all button's text to their initial value after 3 seconds of warning so it shows necessary information.~~  
+## World simulation
 
 Population  
 Diseases  
@@ -16,10 +17,10 @@ Trends
 
 ---
 
-### Random events
-### Custom bussiness name
-### Change character image and custom name
-### World variables
+## Random events
+## Custom bussiness name
+## Change character image and custom name
+## World variables
 
 Locations  
 Conditions  
@@ -29,4 +30,4 @@ Economy
 
 ---
 
-### Save game and load game
+## Save game and load game

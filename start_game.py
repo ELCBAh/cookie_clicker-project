@@ -45,6 +45,7 @@ def start_game(main_menu_window):
             score_label.config(text=f"Score: {score:.2f}")
         else:
             upgrade_button.config(text=f"You need {score - multiplier_cost:.2f} more points to upgrade")
+            upgrade_button.after(3000, lambda: upgrade_button.config(text=f"Upgrade ({multiplier}x) for {multiplier_cost:.2f} points"))
 
     def sell_production():
         "Handles production and sell to score"
@@ -57,6 +58,7 @@ def start_game(main_menu_window):
             sell_button.config(text=f"Sell for {product_value}")
         else:
             sell_button.config(text="Not enough products to sell")
+            sell_button.after(3000, lambda: sell_button.config(text=f"Sell for {product_value}"))
 
     def upgrade_sell():
         "Handles sell button upgrade"
@@ -68,6 +70,7 @@ def start_game(main_menu_window):
             upgrade_sell_button.config(text=f"Upgrade sell ({sell_multiplier}x) for 20 points")
         else:
             upgrade_sell_button.config(text=f"You need {score - 20:.2f} more points to upgrade")
+            upgrade_sell_button.after(3000, lambda: upgrade_sell_button.config(text=f"Upgrade sell ({sell_multiplier}x) for 20 points"))
 
     def toggle_production_box():
         "Switching visibility of content_frame"
@@ -77,6 +80,15 @@ def start_game(main_menu_window):
         else:
             content_frame.pack(pady=20)
             toggle_button.config(text="- Production")
+
+    def toggle_economy_box():
+        "Switching visibility of economy_frame"
+        if economy_frame.winfo_viewable():
+            economy_frame.pack_forget()
+            toggle_economy_button.config(text="+ Economy")
+        else:
+            economy_frame.pack(pady=20)
+            toggle_economy_button.config(text="- Economy")
 
     def return_to_menu():
         game_window.destroy()
@@ -91,9 +103,21 @@ def start_game(main_menu_window):
 
     # Widgets
 
+    # Bottom main menu bar
+    bottom_main_menu_bar = tk.Frame(game_window)
+    bottom_main_menu_bar.pack(side="bottom", pady=20)
+
+    # Top collapsibles bar
+    top_collapsibles_bar = tk.Frame(game_window)
+    top_collapsibles_bar.pack(side="top", pady=20)
+
     # Button to toggle production box
-    toggle_button = tk.Button(game_window, text="+ Production", command=toggle_production_box)
+    toggle_button = tk.Button(top_collapsibles_bar, text="+ Production", command=toggle_production_box)
     toggle_button.pack(pady=10)
+
+    # Button to toggle economy box
+    toggle_economy_button = tk.Button(top_collapsibles_bar, text="+ Economy", command=toggle_economy_box)
+    toggle_economy_button.pack(pady=10)
 
     # Frame to contain production widgets
     content_frame = tk.Frame(game_window)
@@ -125,8 +149,8 @@ def start_game(main_menu_window):
     upgrade_sell_button.pack(pady=10)
 
     # Button to return to main menu
-    main_menu_button = tk.Button(game_window, text="Main Menu", command=return_to_menu)
-    main_menu_button.pack(side="bottom", pady=20)
+    main_menu_button = tk.Button(bottom_main_menu_bar, text="Main Menu", command=return_to_menu)
+    main_menu_button.pack(side="bottom", padx=20)
 
     game_window.protocol("WM_DELETE_WINDOW", on_game_close)
     game_window.protocol("WM_DELETE_WINDOW", return_to_menu)
