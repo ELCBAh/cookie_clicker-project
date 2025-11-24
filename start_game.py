@@ -78,7 +78,7 @@ def start_game(main_menu_window):
             production_frame.pack_forget()
             toggle_button.config(text="+ Production")
         else:
-            production_frame.pack(padx=10)
+            production_frame.pack(padx=10, side="right")
             toggle_button.config(text="- Production")
 
     def toggle_economy_box():
@@ -103,10 +103,6 @@ def start_game(main_menu_window):
 
     # Widgets
 
-    # Content container
-    content_container = tk.Frame(game_window)
-    content_container.pack(pady=10)
-
     # Bottom main menu bar
     bottom_main_menu_bar = tk.Frame(game_window)
     bottom_main_menu_bar.pack(side="bottom", pady=20)
@@ -114,6 +110,10 @@ def start_game(main_menu_window):
     # Top collapsibles bar
     top_collapsibles_bar = tk.Frame(game_window)
     top_collapsibles_bar.pack(side="top", pady=20)
+
+    # Content container
+    content_container = tk.Frame(game_window)
+    content_container.pack(pady=10)
 
     # Button to toggle production box
     toggle_button = tk.Button(top_collapsibles_bar, text="+ Production", command=toggle_production_box)
@@ -124,11 +124,11 @@ def start_game(main_menu_window):
     toggle_economy_button.pack(padx=10, side="right")
 
     # Frame to contain production widgets
-    production_frame = tk.Frame(game_window)
-    production_frame.pack(padx=10)
+    production_frame = tk.Frame(content_container)
+    production_frame.pack(padx=10, side="right")
 
     # Frame to contain economy widgets
-    economy_frame = tk.Frame(game_window)
+    economy_frame = tk.Frame(content_container)
     economy_frame.pack(padx=10, side="right")
 
     # Label to show production
