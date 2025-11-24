@@ -18,7 +18,7 @@ root.title("Main Menu")
 root.geometry("1280x720")
 
 # Widgets
-title_label = tk.Label(root, text="Production clicker", font=("Arial", 18))
+title_label = tk.Label(root, text="Basic cookie clicker", font=("Arial", 18))
 title_label.pack(pady=20)
 
 start_button = tk.Button(root, text="Start Game", font=("Arial", 14), command=handle_start_click)
