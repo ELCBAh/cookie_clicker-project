@@ -78,7 +78,7 @@ def start_game(main_menu_window):
             production_frame.pack_forget()
             toggle_button.config(text="+ Production")
         else:
-            production_frame.pack(padx=10, side="right")
+            production_frame.pack(padx=10, side="right", anchor="n")
             toggle_button.config(text="- Production")
 
     def toggle_economy_box():
@@ -87,7 +87,7 @@ def start_game(main_menu_window):
             economy_frame.pack_forget()
             toggle_economy_button.config(text="+ Economy")
         else:
-            economy_frame.pack(padx=10, side="right")
+            economy_frame.pack(padx=10, side="right", anchor="n")
             toggle_economy_button.config(text="- Economy")
 
     def return_to_menu():
@@ -124,19 +124,19 @@ def start_game(main_menu_window):
     toggle_economy_button.pack(padx=10, side="right")
 
     # Frame to contain production widgets
-    production_frame = tk.Frame(content_container)
-    production_frame.pack(padx=10, side="right")
+    production_frame = tk.Frame(content_container, bg="lightgreen", padx=10, pady=10)
+    production_frame.pack(padx=10, side="right", anchor="n")
 
     # Frame to contain economy widgets
-    economy_frame = tk.Frame(content_container)
-    economy_frame.pack(padx=10, side="right")
+    economy_frame = tk.Frame(content_container, bg="lightblue", padx=10, pady=10)
+    economy_frame.pack(padx=10, side="right", anchor="n")
 
     # Label to show production
-    production_label = tk.Label(economy_frame, text="Production: 0", font=("Arial", 20))
+    production_label = tk.Label(economy_frame, text="Production: 0", font=("Arial", 20), bg="lightblue")
     production_label.pack(pady=10)
 
     # Label to show score
-    score_label = tk.Label(economy_frame, text="Score: 0", font=("Arial", 20))
+    score_label = tk.Label(economy_frame, text="Score: 0", font=("Arial", 20), bg="lightblue")
     score_label.pack(pady=10)
 
     # Button to click on to increase production
