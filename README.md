@@ -28,14 +28,14 @@ Add automation to production and selling
 ## Change character image and custom name
 ## World variables
 
-Population  (by locations)
-Locations  (by markets)
-Infrastructure  (by markets and locations)
-NRG  (by markets, infrastructure, politics, economy, resources and locations)
-Politics  (by markets, infrastructure, diplomacy)
-Economy  (by markets, infrastructure, diplomacy)
-Resources  (by markets, infrastructure, diplomacy)
-Diplomacy  (by markets, infrastructure, politics)
+Population
+Locations
+Infrastructure
+NRG
+Politics
+Economy
+Resources
+Diplomacy
 ##  
 
 ## Save game and load game
