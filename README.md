@@ -6,6 +6,11 @@
 ### ~~Main menu with a start button and close game functionalities~~
 ### ~~Game frame instead of different windows~~
 
+## Optimizations
+
+### ~~Return to main menu without destroying GameFrame~~
+### Remove old frames from memory
+
 ## GUI
 
 ### ~~Production is on its own box that can be collapsed to the top of the screen.~~  

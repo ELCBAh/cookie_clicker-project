@@ -5,17 +5,17 @@ class GameFrame(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        
+
         # --- Variables ---
         # Production variables
         self.product_value = 5
         self.production = 0
         self.production_modifier = 1
         self.production_stock = self.production
-        
+
         # Sell variables
         self.sell_multiplier = 1
-        
+
         # Score variables
         self.score = 0
         self.multiplier_cost = 10
@@ -79,7 +79,7 @@ class GameFrame(tk.Frame):
         self.sell_button.pack(pady=10, side="bottom")
 
         # Button to return to main menu
-        self.main_menu_button = tk.Button(self.bottom_main_menu_bar, text="Main Menu", command=self.return_to_menu)
+        self.main_menu_button = tk.Button(self.bottom_main_menu_bar, text="Main Menu", command=self.controller.return_to_menu)
         self.main_menu_button.pack(side="bottom", pady=20)
 
     # --- Functions ---
