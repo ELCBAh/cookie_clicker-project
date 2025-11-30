@@ -28,14 +28,14 @@ Add automation to production and selling
 ## Change character image and custom name
 ## World variables
 
-Population
-Locations
-Infrastructure
-NRG
-Politics
-Economy
-Resources
-Diplomacy
+Population  
+Locations  
+Infrastructure  
+NRG  
+Politics  
+Economy  
+Resources  
+Diplomacy  
 ##  
 
 ## Save game and load game
