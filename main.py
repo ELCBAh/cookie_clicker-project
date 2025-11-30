@@ -29,16 +29,17 @@ class CookieClickerApp(tk.Tk):
         frame = self.frames[frame_class]
         frame.tkraise()
 
-    def reset_frames(self, frame_class):
+    def reset_frames(self):
         "Clear current frame and create new frame"
         for widget in self.container.winfo_children():
             widget.destroy()
-        self.show_frame(frame_class)
+        self.show_frame(GameFrame)
 
     def show_main_menu(self):
         self.show_frame(self.MainMenu)
 
     class MainMenu(tk.Frame):
+        """Frame containing main menu widgets"""
         def __init__(self, parent, controller):
             super().__init__(parent)
             self.controller = controller
@@ -58,7 +59,7 @@ class CookieClickerApp(tk.Tk):
 
     def handle_start_click(self):
         "Calling start_game function and passes main window as a new game"
-        self.reset_frames(GameFrame)
+        self.reset_frames()
 
     def handle_exit_click(self):
         "Closes the main window"
