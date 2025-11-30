@@ -4,6 +4,8 @@
 
 ### ~~Basic functionalities~~
 ### ~~Main menu with a start button and close game functionalities~~
+### ~~Game frame instead of different windows~~
+
 ## GUI
 
 ### ~~Production is on its own box that can be collapsed to the top of the screen.~~  
