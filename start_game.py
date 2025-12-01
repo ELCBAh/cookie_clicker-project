@@ -28,31 +28,33 @@ class GameFrame(tk.Frame):
 
         # Bottom main menu bar
         self.bottom_main_menu_bar = tk.Frame(self)
-        self.bottom_main_menu_bar.pack(side="bottom", pady=20)
+        self.bottom_main_menu_bar.pack(side="bottom", pady=20, anchor="sw")
 
         # Top collapsibles bar
         self.top_collapsibles_bar = tk.Frame(self)
-        self.top_collapsibles_bar.pack(side="top", pady=20)
+        self.top_collapsibles_bar.pack(side="top", pady=20, anchor="nw")
 
         # Content container
         self.content_container = tk.Frame(self)
-        self.content_container.pack(pady=10)
+        self.content_container.pack(pady=10, anchor="nw")
 
         # Button to toggle production box
         self.toggle_button = tk.Button(self.top_collapsibles_bar, text="+ Production", command=self.toggle_production_box)
-        self.toggle_button.pack(padx=10, side="left")
+        self.toggle_button.pack(side="left", padx=10)
 
         # Button to toggle economy box
         self.toggle_economy_button = tk.Button(self.top_collapsibles_bar, text="+ Economy", command=self.toggle_economy_box)
-        self.toggle_economy_button.pack(padx=10, side="right")
+        self.toggle_economy_button.pack(side="right", padx=10)
+
+        # Future boxes should pack to the right side of the content container
 
         # Frame to contain production widgets
         self.production_frame = tk.Frame(self.content_container, bg="lightgreen", padx=10, pady=10)
-        self.production_frame.pack(padx=10, side="right", anchor="n")
+        self.production_frame.pack(side="left", padx=10, anchor="n")
 
         # Frame to contain economy widgets
         self.economy_frame = tk.Frame(self.content_container, bg="lightblue", padx=10, pady=10)
-        self.economy_frame.pack(padx=10, side="right", anchor="n")
+        self.economy_frame.pack(side="right", padx=10, anchor="n")
 
         # Label to show production
         self.production_label = tk.Label(self.economy_frame, text="Production: 0", font=("Arial", 20), bg="lightblue")
@@ -68,19 +70,19 @@ class GameFrame(tk.Frame):
 
         # Button to upgrade the main character production generation 2x per click
         self.upgrade_button = tk.Button(self.production_frame, text=f"Upgrade production for {self.multiplier_cost}", command=self.upgrade_click)
-        self.upgrade_button.pack(pady=10, side="top")
+        self.upgrade_button.pack(pady=10)
 
         # Button to upgrade sell capacity
         self.upgrade_sell_button = tk.Button(self.production_frame, text="Upgrade sell capacity for 20", command=self.upgrade_sell)
-        self.upgrade_sell_button.pack(pady=10, side="top")
+        self.upgrade_sell_button.pack(pady=10)
 
         # Button to sell production
         self.sell_button = tk.Button(self.production_frame, text=f"Sell production for {self.product_value}", command=self.sell_production)
-        self.sell_button.pack(pady=10, side="bottom")
+        self.sell_button.pack(pady=10)
 
         # Button to return to main menu
         self.main_menu_button = tk.Button(self.bottom_main_menu_bar, text="Main Menu", command=self.controller.return_to_menu)
-        self.main_menu_button.pack(side="bottom", pady=20)
+        self.main_menu_button.pack(padx=10, pady=20, anchor="sw")
 
     # --- Functions ---
 
@@ -130,7 +132,7 @@ class GameFrame(tk.Frame):
             self.production_frame.pack_forget()
             self.toggle_button.config(text="+ Production")
         else:
-            self.production_frame.pack(padx=10, side="right", anchor="n")
+            self.production_frame.pack(side="left", padx=10)
             self.toggle_button.config(text="- Production")
 
     def toggle_economy_box(self):
@@ -139,11 +141,5 @@ class GameFrame(tk.Frame):
             self.economy_frame.pack_forget()
             self.toggle_economy_button.config(text="+ Economy")
         else:
-            self.economy_frame.pack(padx=10, side="right", anchor="n")
+            self.economy_frame.pack(side="right", padx=10)
             self.toggle_economy_button.config(text="- Economy")
-
-    def return_to_menu(self):
-        if hasattr(self.controller, "show_main_menu"):
-            self.controller.show_main_menu()
-        else:
-            pass 

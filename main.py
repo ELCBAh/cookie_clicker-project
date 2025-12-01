@@ -12,39 +12,34 @@ class CookieClickerApp(tk.Tk):
 
         # Container to hold all frames
         self.container = tk.Frame(self)
-        self.container.pack(fill="both", expand=True)
+        self.container.grid(row=0, column=0, sticky="nsew")
+        self.container.grid_rowconfigure(0, weight=1)
+        self.container.grid_columnconfigure(0, weight=1)
 
         # Dictionary to keep track of frames
         self.frames = {}
         # Initialize game frames at startup
         self.initialize_frames(self.MainMenu)
-        self.is_new_game = False
 
     def initialize_frames(self, frame_class):
         "Clear and initialize frames"
-        self.container.destroy()
+        self.container.grid_forget() # .destroy() is destroying all frames, trying a different approach to keep frames
         self.container = tk.Frame(self)
-        self.container.pack(fill="both", expand=True)
+        self.container.grid(row=0, column=0, sticky="nsew")
         self.frames[frame_class] = frame_class(self.container, self.controller)
-        self.frame_class = frame_class
         self.frames[frame_class].grid(row=0, column=0, sticky="nsew")
     
     def return_to_menu(self):
         "Returns to main menu frame without destroying GameFrame"
-        if self.frame_class == GameFrame:
-            self.initialize_frames(self.MainMenu)
-        else:
-            self.show_frame(self.MainMenu)
+        self.show_frame(self.MainMenu)
 
     def show_frame(self, frame_class):
         "Show a frame for the given class"
-        frame = self.frames[frame_class]
-        frame.tkraise()
+        self.frames[frame_class].tkraise()
 
     def handle_start_click(self):
         "Calling start_game function and passes main window as a new game"
         self.initialize_frames(GameFrame)
-        self.is_new_game = True
 
     def handle_exit_click(self):
         "Closes the main window"
@@ -52,10 +47,10 @@ class CookieClickerApp(tk.Tk):
 
     def handle_continue_click(self):
         "Show last game frame, if there is none then create a new game"
-        if self.is_new_game:
-            self.initialize_frames(GameFrame)
+        if self.frames.get(GameFrame) is not None:
+            self.show_frame(self.frames[GameFrame])
         else:
-            self.show_frame(self.frame_class)
+            self.handle_start_click()
 
     class MainMenu(tk.Frame):
         """Frame containing main menu widgets"""
@@ -65,16 +60,16 @@ class CookieClickerApp(tk.Tk):
 
             # Widgets
             title_label = tk.Label(self, text="Basic cookie clicker", font=("Arial", 18))
-            title_label.pack(pady=20)
+            title_label.grid(row=0, column=0, pady=20)
 
             continue_button = tk.Button(self, text="Continue", font=("Arial", 14), command=self.controller.handle_continue_click)
-            continue_button.pack(pady=10)
+            continue_button.grid(row=1, column=0, pady=10)
 
             start_button = tk.Button(self, text="New Game", font=("Arial", 14), command=self.controller.handle_start_click)
-            start_button.pack(pady=10)
+            start_button.grid(row=2, column=0, pady=10)
 
             exit_button = tk.Button(self, text="Exit", font=("Arial", 14), command=self.controller.handle_exit_click)
-            exit_button.pack(pady=10)
+            exit_button.grid(row=3, column=0, pady=10)
 
 if __name__ == "__main__":
     app = CookieClickerApp()
