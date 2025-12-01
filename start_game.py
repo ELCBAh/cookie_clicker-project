@@ -40,11 +40,11 @@ class GameFrame(tk.Frame):
 
         # Button to toggle production box
         self.toggle_button = tk.Button(self.top_collapsibles_bar, text="+ Production", command=self.toggle_production_box)
-        self.toggle_button.pack(side="left", padx=10)
+        self.toggle_button.pack(side="left", padx=10, anchor="n")
 
         # Button to toggle economy box
         self.toggle_economy_button = tk.Button(self.top_collapsibles_bar, text="+ Economy", command=self.toggle_economy_box)
-        self.toggle_economy_button.pack(side="right", padx=10)
+        self.toggle_economy_button.pack(side="right", padx=10, anchor="n")
 
         # Future boxes should pack to the right side of the content container
 
@@ -132,7 +132,7 @@ class GameFrame(tk.Frame):
             self.production_frame.pack_forget()
             self.toggle_button.config(text="+ Production")
         else:
-            self.production_frame.pack(side="left", padx=10)
+            self.production_frame.pack(side="left", padx=10, anchor="n")
             self.toggle_button.config(text="- Production")
 
     def toggle_economy_box(self):
@@ -141,5 +141,5 @@ class GameFrame(tk.Frame):
             self.economy_frame.pack_forget()
             self.toggle_economy_button.config(text="+ Economy")
         else:
-            self.economy_frame.pack(side="right", padx=10)
+            self.economy_frame.pack(side="right", padx=10, anchor="n")
             self.toggle_economy_button.config(text="- Economy")
