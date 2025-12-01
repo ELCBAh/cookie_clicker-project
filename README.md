@@ -2,21 +2,22 @@
 
 ## To do
 
-### ~~Basic functionalities~~
-### ~~Main menu with a start button and close game functionalities~~
-### ~~Game frame instead of different windows~~
+### ~~Basic functionalities~~  
+### ~~Main menu with a start button and close game functionalities~~  
+### ~~Game frame instead of different windows~~  
 
 ## Optimizations
 
-### ~~Return to main menu without destroying GameFrame~~
-### ~~Continue from last game~~
-### Remove old frames from memory
+### ~~Return to main menu without destroying GameFrame~~  
+### ~~Continue from last game~~  
+### ~~Remove old frames from memory (handling them differently)~~  
 
 ## GUI
 
 ### ~~Production is on its own box that can be collapsed to the top of the screen.~~  
 ### ~~Bottom bar containing Main Menu, and can be expanded to show other options in the future.~~  
 ### ~~Reset all button's text to their initial value after 3 seconds of warning so it shows necessary information.~~  
+### Center the main menu elements
 
 ## World simulation
 
