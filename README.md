@@ -9,6 +9,7 @@
 ## Optimizations
 
 ### ~~Return to main menu without destroying GameFrame~~
+### ~~Continue from last game~~
 ### Remove old frames from memory
 
 ## GUI
