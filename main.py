@@ -10,11 +10,13 @@ class CookieClickerApp(tk.Tk):
         self.title("Cookie Clicker")
         self.geometry("1280x720")
 
+        # Root grid configuration
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1)
+
         # Container to hold all frames
         self.container = tk.Frame(self)
         self.container.grid(row=0, column=0, sticky="nsew")
-        self.container.grid_rowconfigure(0, weight=1)
-        self.container.grid_columnconfigure(0, weight=1)
 
         # Dictionary to keep track of frames
         self.frames = {}
@@ -22,12 +24,12 @@ class CookieClickerApp(tk.Tk):
         # Showing main menu frame intially
         menu_frame = self.MainMenu(self.container, self.controller)
         self.frames[self.MainMenu] = menu_frame
+        self.container.grid(row=0, column=0, sticky="nsew")
         menu_frame.grid(row=0, column=0, sticky="nsew")
         self.show_frame(self.MainMenu)
 
     def initialize_frames(self, frame_class):
         "Clear and initialize frames"
-        # self.container.grid_forget() # .destroy() is destroying all frames, trying a different approach to keep frames
         game_frame = frame_class(self.container, self.controller)
         self.frames[frame_class] = game_frame
         self.container.grid(row=0, column=0, sticky="nsew")
@@ -63,18 +65,40 @@ class CookieClickerApp(tk.Tk):
             super().__init__(parent)
             self.controller = controller
 
+            # Grid configuration
+            self.grid_rowconfigure(0, weight=1)
+            self.grid_columnconfigure(0, weight=1)
+
+            # Content container
+            self.content_container = tk.Frame(self, padx=10, pady=10)
+            self.content_container.grid(row=1, column=1, sticky="nsew")
+
+            # Organizers
+
+            self.top_filler = tk.Frame(self)
+            self.top_filler.grid(row=0, column=1, sticky="nswe")
+
+            self.bottom_filler = tk.Frame(self)
+            self.bottom_filler.grid(row=2, column=1, sticky="nswe")
+
+            self.left_filler = tk.Frame(self)
+            self.left_filler.grid(row=1, column=0, sticky="nswe")
+
+            self.right_filler = tk.Frame(self)
+            self.right_filler.grid(row=1, column=2, sticky="nswe")
+
             # Widgets
-            title_label = tk.Label(self, text="Basic cookie clicker", font=("Arial", 18))
-            title_label.grid(row=0, column=0, pady=20)
+            title_label = tk.Label(self.top_filler, text="Basic cookie clicker", font=("Arial", 18))
+            title_label.grid(row=0, column=1, pady=20, sticky="nsew")
 
-            continue_button = tk.Button(self, text="Continue", font=("Arial", 14), command=self.controller.handle_continue_click)
-            continue_button.grid(row=1, column=0, pady=10)
+            continue_button = tk.Button(self.content_container, text="Continue", font=("Arial", 14), command=self.controller.handle_continue_click)
+            continue_button.grid(row=1, column=1, pady=10, sticky="nsew")
 
-            start_button = tk.Button(self, text="New Game", font=("Arial", 14), command=self.controller.handle_start_click)
-            start_button.grid(row=2, column=0, pady=10)
+            start_button = tk.Button(self.content_container, text="New Game", font=("Arial", 14), command=self.controller.handle_start_click)
+            start_button.grid(row=2, column=1, pady=10, sticky="nsew")
 
-            exit_button = tk.Button(self, text="Exit", font=("Arial", 14), command=self.controller.handle_exit_click)
-            exit_button.grid(row=3, column=0, pady=10)
+            exit_button = tk.Button(self.content_container, text="Exit", font=("Arial", 14), command=self.controller.handle_exit_click)
+            exit_button.grid(row=3, column=1, pady=10, sticky="nsew")
 
 if __name__ == "__main__":
     app = CookieClickerApp()
