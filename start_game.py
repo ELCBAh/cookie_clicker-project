@@ -6,6 +6,7 @@ class GameFrame(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
+        self.population_simulator = PopulationSimulator()
 
         # --- Variables ---
         # Production variables
@@ -73,6 +74,10 @@ class GameFrame(tk.Frame):
         self.score_label = tk.Label(self.economy_frame, text="Score: 0", font=("Arial", 20), bg="lightblue")
         self.score_label.pack(pady=10)
 
+        # Label to show population
+        self.population_label = tk.Label(self.population_frame, text=f"Population: {self.population_simulator.population}", font=("Arial", 20), bg="lightyellow")
+        self.population_label.pack(pady=10)
+
         # Button to click on to increase production
         self.main_character = tk.Button(self.production_frame, image=self.main_character_img, width=150, height=200, command=self.main_character_click)
         self.main_character.pack(pady=20)
@@ -96,12 +101,14 @@ class GameFrame(tk.Frame):
     # --- Functions ---
 
     def main_character_click(self):
-        "Handling character clicks"
+        "Handling character clicks when creating a product"
+        self.time_to_produce = 3
         self.production += self.multiplier
         self.production_label.config(text=f"Production: {self.production}")
+        # self.main_character.after(self.time_to_produce * 1000, self.main_character_click) # Uncheck for automated production
 
     def upgrade_click(self):
-        "Handling upgrade clicks"
+        "Handling upgrade clicks, upgrading production generation"
         if self.score >= self.multiplier_cost:
             self.score -= self.multiplier_cost
             self.multiplier += 1
