@@ -1,4 +1,5 @@
 import tkinter as tk
+from pop_sim import PopulationSimulator
 
 class GameFrame(tk.Frame):
     "Used for running the game"
@@ -46,6 +47,10 @@ class GameFrame(tk.Frame):
         self.toggle_economy_button = tk.Button(self.top_collapsibles_bar, text="+ Economy", command=self.toggle_economy_box)
         self.toggle_economy_button.pack(side="right", padx=10, anchor="n")
 
+        # Button to toggle population box
+        self.toggle_population_button = tk.Button(self.top_collapsibles_bar, text="+ Population", command=self.toggle_population_box)
+        self.toggle_population_button.pack(side="right", padx=10, anchor="n")
+
         # Future boxes should pack to the right side of the content container
 
         # Frame to contain production widgets
@@ -55,6 +60,10 @@ class GameFrame(tk.Frame):
         # Frame to contain economy widgets
         self.economy_frame = tk.Frame(self.content_container, bg="lightblue", padx=10, pady=10)
         self.economy_frame.pack(side="right", padx=10, anchor="n")
+
+        # Frame to contain population widgets
+        self.population_frame = tk.Frame(self.content_container, bg="lightyellow", padx=10, pady=10)
+        self.population_frame.pack(side="right", padx=10, anchor="n")
 
         # Label to show production
         self.production_label = tk.Label(self.economy_frame, text="Production: 0", font=("Arial", 20), bg="lightblue")
@@ -143,3 +152,12 @@ class GameFrame(tk.Frame):
         else:
             self.economy_frame.pack(side="right", padx=10, anchor="n")
             self.toggle_economy_button.config(text="- Economy")
+
+    def toggle_population_box(self):
+        "Switching visibility of population_frame"
+        if self.population_frame.winfo_viewable():
+            self.population_frame.pack_forget()
+            self.toggle_population_button.config(text="+ Population")
+        else:
+            self.population_frame.pack(side="right", padx=10, anchor="n")
+            self.toggle_population_button.config(text="- Population")
